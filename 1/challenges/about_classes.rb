@@ -1,20 +1,25 @@
 require_relative "challenge"
 
 # Define your User class here
+class User
+  def initialize(name = "John", email = "john@test.com")
+
+  end
+end
 
 challenge "Define a class named User and set it to the `user_class` variable" do
-  user_class = _
+  user_class = User
   expect { user_class == User }
 end
 
 challenge "Initialize a new User object" do
-  user = _
+  user = User.new
   expect { user.instance_of?(User) }
 end
 
 challenge "Initialize a new User object with two optional attributes",
           "that represents the name and email attributes" do
-  user = _
+  user = User.new("Test", "test@domain.com")
 
   expect { user.instance_of?(User) }
 end

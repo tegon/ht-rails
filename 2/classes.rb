@@ -47,3 +47,6 @@ puts user.email
 
 # user.name "John Doe"
 # puts user.name
+
+puts user.instance_variable_set("@email", "hello there!")
+puts user.instance_variable_get("@email")

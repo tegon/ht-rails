@@ -2,8 +2,31 @@ require_relative "challenge"
 
 # Define your User class here
 class User
-  def initialize(name = "John", email = "john@test.com")
+  attr_accessor :name, :email, :role
 
+  def initialize(name = "nil", email = "nil")
+    @name = name
+    @email = email
+  end
+
+  def admin?
+    @role == "admin"
+  end
+
+  def admin!
+    @role = "admin"
+  end
+end
+
+class Admin < User
+  def initialize
+    super
+    @role = "admin"
+  end
+
+  def role=(role)
+    raise "Can't change admin's role attribute" if role != "admin"
+    @role = role
   end
 end
 
@@ -19,14 +42,14 @@ end
 
 challenge "Initialize a new User object with two optional attributes",
           "that represents the name and email attributes" do
-  user = User.new("Test", "test@domain.com")
+  user = User.new()
 
   expect { user.instance_of?(User) }
 end
 
 challenge "Create the getters that will return the attributes",
           "passed to the initializer" do
-  user = _
+  user = User.new("John Doe", "john@example.org")
 
   expect { user.name == "John Doe" }
   expect { user.email == "john@example.org" }
@@ -78,6 +101,16 @@ challenge "Raise an exception when trying to change the admin's",
   expect_exception("Can't change admin's role attribute") {
     Admin.new.role = "customer"
   }
+end
+
+class Admin::ImmutableAttribute < StandardError
+end
+
+class Admin < User
+  def role=(role)
+    raise Admin::ImmutableAttribute if role != "admin"
+    @role = role
+  end
 end
 
 challenge "Raise an exception class Admin::ImmutableAttribute when trying",

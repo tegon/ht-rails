@@ -1,6 +1,39 @@
 require_relative "challenge"
 
 # Your class and module goes here
+module Skills
+  def knows?(skill)
+    true if @skills.include?(skill)
+  end
+end
+
+class User
+  include Skills
+
+  attr_accessor :skills
+
+  # def knows?(skill)
+  #   true if @skills.include?(skill)
+  # end
+end
+
+class Ninja
+  include Skills
+
+  attr_accessor :skills
+
+  # def knows?(skill)
+  #   true if @skills.include?(skill)
+  # end
+end
+
+class ChuckNorris
+  include Skills
+
+  def knows?(skill)
+    true
+  end
+end
 
 challenge "Create a module called Skills" do
   expect {
@@ -53,7 +86,7 @@ end
 
 challenge "Add the `Ninja#skills` attribute. What happens next?" do
   ninja = Ninja.new
-  ninja.skills = _
+  ninja.skills = [:ninjutsu, :spionage, :survival]
 
   expect { ninja.knows?(:ninjutsu) }
   expect { ninja.knows?(:spionage) }

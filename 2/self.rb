@@ -7,7 +7,7 @@ class User
   end
 
   def full_name
-    "#{ self.first_name } #{ self.last_name }"
+    "#{ first_name } #{ last_name }"
   end
 
   def first_name=(first_name)

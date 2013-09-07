@@ -1,2 +1,6 @@
 module ApplicationHelper
+  def error_for(record, attribute)
+    message = record.errors[attribute].first
+    content_tag :span, message, class: 'error' if message
+  end
 end

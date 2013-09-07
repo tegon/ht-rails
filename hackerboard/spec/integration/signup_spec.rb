@@ -8,10 +8,10 @@ describe 'Signup' do
       visit '/'
       click_link 'Cadastre-se'
 
-      fill_with 'Nome completo', with: 'John Doe'
-      fill_with 'E-mail', with: 'john@example.org'
-      fill_with 'Senha', with: 'test'
-      fill_with 'Confirmação de senha', with: 'test'
+      fill_in 'Nome completo', with: 'John Doe'
+      fill_in 'E-mail', with: 'johndoe@example.org'
+      fill_in 'Senha', with: 'test'
+      fill_in 'Confirmação de senha', with: 'test'
 
       click_button 'Quero me cadastrar' 
     end
@@ -22,6 +22,29 @@ describe 'Signup' do
 
     it 'displays success message' do
       page.should have_content('Seu cadastro foi realizado com sucesso!')
+    end
+
+    it 'logins with created account' do
+      login with: "johndoe@example.org"
+
+      current_path.should eql(root_path)
+      page.should have_content("Olá, John Doe!")
+    end
+  end
+
+  context 'with invalid data' do
+    before do
+      visit '/'
+      click_link 'Cadastre-se'
+      click_button 'Quero me cadastrar' 
+    end
+
+    it 'renders form page' do
+      current_path.should eql(signup_path)
+    end
+
+    it 'displays error messages' do
+      page.should have_content('Verifique o formulário antes de continuar.')
     end
   end
 end

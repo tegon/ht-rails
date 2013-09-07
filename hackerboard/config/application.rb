@@ -12,5 +12,13 @@ module Hackerboard
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.yml').to_s]
     config.i18n.default_locale = :"pt-BR"
     config.assets.enabled = false
+
+    console do
+      require 'pry'
+      require "awesome_print"
+    
+      config.console = Pry
+      AwesomePrint.pry!
+    end
   end
 end

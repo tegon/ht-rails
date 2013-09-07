@@ -38,14 +38,14 @@ end
 
 challenge "Transform the nested array into a flattened one" do
   array = [[1], [2], [3, 4, 5]]
-  array = array.flatten
+  array.flatten!
 
   expect { array == [1, 2, 3, 4, 5] }
 end
 
 challenge "Map the array, returning its items multiplied by 2" do
   numbers = [1, 2, 3, 4, 5]
-  numbers = numbers.map { |number| number * 2 }
+  numbers.map! { |number| number * 2 }
 
   expect { numbers == [2, 4, 6, 8, 10] }
 end
@@ -61,7 +61,7 @@ end
 
 challenge "Reduce the array into a single sum of all elements" do
   array = [1, 2, 3]
-  sum = array.inject { |sum, x| sum + x }
+  sum = array.inject(:+)
 
   expect { sum == 6 }
 end
@@ -75,7 +75,7 @@ end
 
 challenge "Reverse the array" do
   array = [1, 2, 3]
-  array = array.reverse
+  array.reverse!
 
   expect { array == [3, 2, 1] }
 end
@@ -103,7 +103,7 @@ end
 
 challenge "How to find the element which its value is 3?" do
   array = [1, 2, 3, 4, 5]
-  item = array[2]
+  item = array.find { |i| i == 3 }
 
   expect { item == 3 }
 end

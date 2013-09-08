@@ -4,6 +4,7 @@ Hackerboard::Application.routes.draw do
   controller :users do
     get '/signup', action: :new
     post '/signup', action: :create
+    get '/users/:id', action: :show, as: :user
   end
 
   controller :sessions do
@@ -16,5 +17,9 @@ Hackerboard::Application.routes.draw do
     get '/questions/new', action: :new, as: :new_question
     post '/questions/new', action: :create
     get 'questions/:id', action: :show, as: :question
+  end
+
+  controller :replies do
+    post '/questions/:question_id/replies/new', action: :create, as: :new_reply
   end
 end

@@ -12,3 +12,7 @@ pt-BR:
         notice: Sua pergunta foi adicionada com sucesso!
     auth:
       alert: Você precisa fazer o login para acessar esta página.
+      
+    replies:
+      create:
+        notice: Sua resposta foi adicionada!

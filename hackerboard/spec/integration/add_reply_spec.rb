@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'spec_helper'
 
 describe 'Add reply' do
@@ -36,6 +38,12 @@ describe 'Add reply' do
   end
 
   context 'when unlogged' do
+    before do
+      visit question_path(question)
+    end
 
+    it 'displays message' do
+      page.should have_content('Você precisa efetuar o login para responder.')
+    end
   end
 end

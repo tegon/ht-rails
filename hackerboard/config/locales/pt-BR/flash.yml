@@ -10,6 +10,9 @@ pt-BR:
     questions:
       create:
         notice: Sua pergunta foi adicionada com sucesso!
+      search:
+        alert: A busca não está funcionando nesse momento! Tente novamente mais tarde.
+
     auth:
       alert: Você precisa fazer o login para acessar esta página.
       

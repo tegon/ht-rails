@@ -16,7 +16,7 @@ describe QuestionFilter do
   }
 
   context 'when filtering by unanswered' do
-    subject { QuestionFilter.filter(QuestionFilter::UNANSWERED).all }
+    subject { QuestionFilter.filter(filter: QuestionFilter::UNANSWERED).all }
 
     it { should have(1).item }
 
@@ -26,7 +26,7 @@ describe QuestionFilter do
   end
 
   context 'when no filter is provided' do
-    subject { QuestionFilter.filter(nil).all }
+    subject { QuestionFilter.filter(filter: nil).all }
 
     it { should have(2).items }
   end

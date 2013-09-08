@@ -10,4 +10,8 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :title, :body, :category, :user
   # validates_associated :category
+
+  def viewed!
+    increment!(:views_count)
+  end
 end

@@ -1,15 +1,30 @@
 <!DOCTYPE html>
-<html lang="<%= I18n.locale %>" dir="ltr">
+<html>
 <head>
   <title>Hackerboard</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "modernizr" %>
+  <%= stylesheet_link_tag "shared", "hb" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-  <%= render "shared/header" %>
-  <%= render "shared/flash_messages" %>
-  <%= render "questions/search" %>
-  <%= yield %>
-  <%#= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <div class="page">
+    <%= render "shared/header" %>
+    <%= render "shared/flash_messages" %>
+
+    <div class="content container group">
+      <section class="main">
+        <%= yield %>
+      </section>
+
+      <aside class="sidebar">
+        <%= render "questions/search" %>
+        <%#= yield :sidebar %>
+      </aside>
+    </div>
+  </div>
+
+  <%= javascript_include_tag "jquery", "script" %>
+  <!-- Updated! -->
 </body>
 </html>

@@ -16,3 +16,4 @@ pt-BR:
     replies:
       create:
         notice: Sua resposta foi adicionada!
+        alert: Você precisa preencher sua resposta.

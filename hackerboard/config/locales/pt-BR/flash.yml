@@ -6,3 +6,4 @@ pt-BR:
     sessions:
       create:
         notice: Que bom que você voltou!
+        alert: E-mail/senha inválidos.

@@ -16,11 +16,11 @@ Rspec::Matchers.define :allow do |*values|
   end
 
   failure_message_for_should do |record|
-    "expected #{ failed.inpect } to be allowed"
+    "expected #{ failed.inspect } to be allowed"
   end
 
   failure_message_for_should_not do |record|
-    "expected #{ (values - failed).inpect } to be rejected"
+    "expected #{ (values - failed).inspect } to be rejected"
   end
 
   description do

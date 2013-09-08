@@ -8,6 +8,7 @@ Hackerboard::Application.routes.draw do
   end
 
   controller :sessions do
+    get '/questions', action: :index, as: :questions
     get '/login', action: :new
     post '/login', action: :create
     get '/logout', action: :destroy

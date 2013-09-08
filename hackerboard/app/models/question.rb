@@ -3,6 +3,7 @@ class Question < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :category
+  has_many :replies
 
   validates_presence_of :title, :body, :category, :user
   # validates_associated :category

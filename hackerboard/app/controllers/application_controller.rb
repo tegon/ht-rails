@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= session[:user_id] && User.find_by_id(session[:user_id])
   end
 
+  def self.require_logged_user(options = {})
+    before_filter :require_logged_user, options
+  end
+
   def require_logged_user
     return if logged_in?
 

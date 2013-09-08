@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
-  before_filter :require_logged_user, only: [:new, :create]
+  require_logged_user only: [:new, :create]
+  
   helper_method :categories
 
   def index

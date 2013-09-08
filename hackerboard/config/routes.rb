@@ -11,4 +11,10 @@ Hackerboard::Application.routes.draw do
     post '/login', action: :create
     get '/logout', action: :destroy
   end
+
+  controller :questions do
+    get '/questions/new', action: :new, as: :new_question
+    post '/questions/new', action: :create
+    get 'questions/:id', action: :show, as: :question
+  end
 end

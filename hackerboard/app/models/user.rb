@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   validates_uniqueness_of :email
 
+  has_many :questions
+
   def password=(password)
     encryption = PasswordEncryptor.encrypt(password)
 

@@ -7,3 +7,8 @@ pt-BR:
       create:
         notice: Que bom que você voltou!
         alert: E-mail/senha inválidos.
+    questions:
+      create:
+        notice: Sua pergunta foi adicionada com sucesso!
+    auth:
+      alert: Você precisa fazer o login para acessar esta página.

@@ -1,5 +1,35 @@
 class QuestionsController < ApplicationController
-  def index
+  before_filter :require_logged_user, only: [:new, :create]
+  helper_method :categories
 
+  def index
+  end
+
+  def show
+    @question = Question.find(params[:id])
+  end
+
+  def new
+    @question = Question.new
+  end
+
+  def create
+    @question = current_user.questions.new(question_params)
+
+    if @question.save
+      redirect_to question_path(@question), notice: t('flash.questions.create.notice')
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def categories
+    @categories ||= Category.scoped
+  end
+
+  def question_params
+    params.require(:question).permit(:title, :body, :category_id)
   end
 end

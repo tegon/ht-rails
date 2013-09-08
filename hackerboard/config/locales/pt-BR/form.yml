@@ -8,3 +8,5 @@ pt-BR:
     submit:
       user:
         create: Quero me cadastrar!
+      question:
+        create: Adicionar pergunta

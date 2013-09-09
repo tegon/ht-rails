@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = QuestionFilter.filter(params)
+    @sidebar = QuestionsSidebarPresenter.new
   end
 
   def search
@@ -26,6 +27,8 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @question.viewed!
+
     @reply = Reply.new
     @reply_form = ReplyFormPresenter.new(current_user, @question, @reply)
   end

@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :replies
 
+  scope :signup, limit(20).order("id desc")
+
   def password=(password)
     encryption = PasswordEncryptor.encrypt(password)
 

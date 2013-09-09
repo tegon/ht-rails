@@ -1,10 +1,20 @@
 Hackerboard::Application.routes.draw do
   root to: 'questions#index'
 
+  controller :feed do
+    get '/feed/questions/:id', action: :replies, as: :replies_feed
+    get '/feed/questions', action: :questions, as: :questions_feed
+    get '/feed/categories/:id', action: :categories, as: :categories_feed
+  end
+
   controller :users do
     get '/signup', action: :new
     post '/signup', action: :create
     get '/users/:id', action: :show, as: :user
+  end
+
+  controller :categories do
+    get '/category/:id', action: :show, as: :category
   end
 
   controller :sessions do

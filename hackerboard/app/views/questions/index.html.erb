@@ -9,3 +9,8 @@
 
 <%= render @questions %>
 <%= paginate @questions %>
+
+<% content_for :sidebar do %>
+  <%= render "categories", :categories => @sidebar.categories %>
+  <%= render "users", :users => @sidebar.users %>
+<% end %>

@@ -1,0 +1,7 @@
+<p>
+  Você quer mesmo remover <strong><%= @category.name %></strong>?
+  <br>
+  Não será possivel desfazer essa ação.
+</p>
+
+<%= button_to "sim", admin_category_path(@category), method: :delete %>

@@ -3,7 +3,7 @@ class Question < ActiveRecord::Base
   
   belongs_to :user, counter_cache: true
   belongs_to :category, counter_cache: true
-  has_many :replies
+  has_many :replies, dependent: :destroy
 
   scope :recent, order("id desc")
   scope :unanswered, where(replies_count: 0)

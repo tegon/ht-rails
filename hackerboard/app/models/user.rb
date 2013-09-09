@@ -5,9 +5,10 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates_confirmation_of :password
   validates_uniqueness_of :email
+  validates_inclusion_of :role, in: %w[admin user]
 
-  has_many :questions
-  has_many :replies
+  has_many :questions, dependent: :destroy
+  has_many :replies, dependent: :destroy
 
   scope :signup, limit(20).order("id desc")
 
@@ -18,5 +19,14 @@ class User < ActiveRecord::Base
     self.password_hash = encryption[:hash]
 
     @password = password
+  end
+
+  def admin?
+    role == "admin"
+  end
+
+  def to_json(options = {})
+    options.merge!(except: [:password_hash, :password_salt])
+    super(options)
   end
 end

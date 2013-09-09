@@ -25,7 +25,7 @@
     </li>
 
     <li>
-      <a href="/questions/feed.xml" class="feed">RSS</a>
+      <%= link_to "RSS", replies_feed_path(@question), class: "feed" %>
     </li>
   </ul>
 <% end %>

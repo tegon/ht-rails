@@ -1,4 +1,5 @@
 Hackerboard::Application.routes.draw do
+  # scope '/:locale' do
   root to: 'questions#index'
 
   controller :feed do
@@ -34,4 +35,5 @@ Hackerboard::Application.routes.draw do
   controller :replies do
     post '/questions/:question_id/replies/new', action: :create, as: :new_reply
   end
+  # end
 end
